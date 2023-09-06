@@ -1,4 +1,4 @@
-# Optizon
+# Optizon(Web 3.0)
 
 ## Technology Stack & Tools
 
