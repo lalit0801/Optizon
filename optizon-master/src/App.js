@@ -7,14 +7,14 @@ import Section from './components/Section'
 import Product from './components/Product'
 
 // ABIs
-import Dappazon from './abis/Dappazon.json'
+import Optizon from './abis/Optizon.json'
 
 // Config
 import config from './config.json'
 
 function App() {
   const [provider, setProvider] = useState(null)
-  const [dappazon, setDappazon] = useState(null)
+  const [optizon, setOptizon] = useState(null)
 
   const [account, setAccount] = useState(null)
 
@@ -35,13 +35,13 @@ function App() {
     setProvider(provider)
     const network = await provider.getNetwork()
 
-    const dappazon = new ethers.Contract(config[network.chainId].dappazon.address, Dappazon, provider)
-    setDappazon(dappazon)
+    const optizon = new ethers.Contract(config[network.chainId].optizon.address, Optizon, provider)
+    setOptizon(optizon)
 
     const items = []
 
     for (var i = 0; i < 9; i++) {
-      const item = await dappazon.items(i + 1)
+      const item = await optizon.items(i + 1)
       items.push(item)
     }
 
@@ -62,7 +62,7 @@ function App() {
     <div>
       <Navigation account={account} setAccount={setAccount} />
 
-      <h2>Dappazon Best Sellers</h2>
+      <h2>Optizon Best Sellers</h2>
 
       {electronics && clothing && toys && (
         <>
@@ -73,7 +73,7 @@ function App() {
       )}
 
       {toggle && (
-        <Product item={item} provider={provider} account={account} dappazon={dappazon} togglePop={togglePop} />
+        <Product item={item} provider={provider} account={account} optizon={optizon} togglePop={togglePop} />
       )}
     </div>
   );
