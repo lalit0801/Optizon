@@ -4,7 +4,7 @@ const tokens = (n) => {
   return ethers.utils.parseUnits(n.toString(), 'ether')
 }
 
-// Global constants for listing an item...
+//Global constants for listing an item
 const ID = 1
 const NAME = "Shoes"
 const CATEGORY = "Clothing"
